@@ -37,3 +37,7 @@ for i in range(cantidad):
         nota = float(input(f"Ingrese nuevamente la nota {i+1}: "))
     
     notas_alumno[i] = nota
+
+
+# Mostrando el resultado final
+mostrar_resultado(nombre_alumno, notas_alumno)
