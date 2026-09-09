@@ -13,4 +13,11 @@ def calcular_descuento(precio, porcentaje):
 precio_prod = float(input("Ingrese el precio del producto: "))
 porcentaje_desc = float(input("Ingrese el porcentaje de descuento: "))
 
+#Usando la formula de arriba
 
+pago_final, ahorro = calcular_descuento(precio_prod, porcentaje_desc)
+
+# Mostrar el resultado final:
+
+print("El precio con descuento es:", pago_final)
+print("El ahorro obtenido es:", ahorro)
