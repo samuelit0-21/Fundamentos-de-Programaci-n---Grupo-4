@@ -16,3 +16,8 @@ def mostrar_paridad(numero):
         print(f"El número {int(numero)} es PAR")
     else:
         print(f"El número {int(numero)} es IMPAR")
+
+#EL PROGRAMA PRINCIPAL
+num = float(input("Ingresa un número: "))
+
+mostrar_paridad(num)
