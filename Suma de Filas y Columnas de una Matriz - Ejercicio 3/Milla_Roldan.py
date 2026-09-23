@@ -23,3 +23,5 @@ for j in range(len(matriz[0])):
         suma_columna += matriz[i][j]
 
     print("Columna", j + 1, ":", suma_columna)
+
+#xd
