@@ -24,4 +24,3 @@ for j in range(len(matriz[0])):
 
     print("Columna", j + 1, ":", suma_columna)
 
-#xd
