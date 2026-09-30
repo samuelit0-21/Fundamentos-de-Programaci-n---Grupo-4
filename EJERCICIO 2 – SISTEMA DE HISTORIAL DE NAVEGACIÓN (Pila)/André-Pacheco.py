@@ -15,7 +15,7 @@ def pagina_actual():
     if len(historial) > 0:
         print("Página actual:", historial[-1])
 
-# Pruebas requeridas
+#Historial
 visitar("Google")
 visitar("YouTube")
 visitar("GitHub")
