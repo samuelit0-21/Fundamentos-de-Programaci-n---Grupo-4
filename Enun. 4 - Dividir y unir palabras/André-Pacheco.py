@@ -6,4 +6,4 @@ lista_colores = [color.strip().upper() for color in cadena_colores.split(",")]
 #Uniendo con el separador ' | '
 resultado = " | ".join(lista_colores)
 
-print("Resultado:", resultado)
+print("Resultado:", resultado) 
