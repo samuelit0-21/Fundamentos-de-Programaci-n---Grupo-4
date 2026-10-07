@@ -1,8 +1,13 @@
-texto = "Este es un texto con contenido secreto y privado."
-prohibidas = ["secreto", "privado"]
+lineas_csv = [
+    "Juan Perez, 85, Lima",
+    "Maria Lopez, 92, Arequipa",
+    "Carlos Ruiz, 78, Trujillo"
+]
 
-for palabra in prohibidas:
-    asteriscos = "*" * len(palabra)
-    texto = texto.replace(palabra, asteriscos)
-
-print("Texto censurado:", texto)
+print("== REPORTE DE ESTUDIANTES ==")
+for linea in lineas_csv:
+    partes = linea.split(",")
+    nombre = partes[0].strip()
+    nota = partes[1].strip()
+    ciudad = partes[2].strip()
+    print(f"Estudiante: {nombre:<15} | Nota: {nota:<3} | Ciudad: {ciudad}")
