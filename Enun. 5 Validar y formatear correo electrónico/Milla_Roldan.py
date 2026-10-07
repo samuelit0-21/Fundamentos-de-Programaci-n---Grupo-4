@@ -6,5 +6,5 @@ def procesar_email(email):
         return f"Email válido. Dominio: {dominio}"
     else:
         return "Email inválido."
-
+#
 print(procesar_email("   Usuario.Prueba@gmail.com   "))
