@@ -91,3 +91,18 @@ def ordenar_expedientes():
 
     print("Expedientes ordenados por codigo.")
     mostrar_expedientes()
+
+# 4. Mostrar todos los expedientes
+def mostrar_expedientes():
+    print("\n--- LISTA DE EXPEDIENTES ---")
+
+    if len(expedientes) == 0:
+        print("No hay expedientes registrados.")
+        return
+
+    for expediente in expedientes:
+        print("-----------------------------")
+        print("Codigo:", expediente["codigo"])
+        print("Ciudadano:", expediente["nombre"])
+        print("DNI:", expediente["dni"])
+        print("Asunto:", expediente["asunto"])
