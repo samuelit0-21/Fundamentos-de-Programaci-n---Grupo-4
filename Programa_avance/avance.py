@@ -106,3 +106,34 @@ def mostrar_expedientes():
         print("Ciudadano:", expediente["nombre"])
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
+
+# 5. Menu principal
+def menu():
+    while True:
+        print("\n===== MESA DE PARTES DIGITAL =====")
+        print("1. Registrar expediente")
+        print("2. Buscar expediente")
+        print("3. Ordenar expedientes")
+        print("4. Mostrar expedientes")
+        print("5. Salir")
+
+        opcion = input("Seleccione una opcion: ").strip()
+
+        if opcion == "1":
+            registrar_expediente()
+
+        elif opcion == "2":
+            buscar_expediente()
+
+        elif opcion == "3":
+            ordenar_expedientes()
+
+        elif opcion == "4":
+            mostrar_expedientes()
+
+        elif opcion == "5":
+            print("Gracias por utilizar el sistema.")
+            break
+
+        else:
+            print("Opcion no valida. Intente nuevamente.")
