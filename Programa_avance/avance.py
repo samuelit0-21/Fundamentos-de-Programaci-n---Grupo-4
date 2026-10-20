@@ -137,3 +137,6 @@ def menu():
 
         else:
             print("Opcion no valida. Intente nuevamente.")
+
+#Iniciar el programa
+menu()
