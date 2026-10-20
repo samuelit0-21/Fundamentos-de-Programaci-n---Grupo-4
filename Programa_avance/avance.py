@@ -78,3 +78,16 @@ def buscar_expediente():
 
     if encontrado == False:
         print("No se encontro el expediente.")
+# 3. Ordenar expedientes por codigo
+def ordenar_expedientes():
+    print("\n--- ORDENAR EXPEDIENTES ---")
+
+    for i in range(len(expedientes)):
+        for j in range(0, len(expedientes) - i - 1):
+            if expedientes[j]["codigo"] > expedientes[j + 1]["codigo"]:
+                temporal = expedientes[j]
+                expedientes[j] = expedientes[j + 1]
+                expedientes[j + 1] = temporal
+
+    print("Expedientes ordenados por codigo.")
+    mostrar_expedientes()
