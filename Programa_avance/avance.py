@@ -107,7 +107,12 @@ def mostrar_expedientes():
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
 
-# 5. Menu principal
+# 5. Actualizacion de estado del expediente
+def Actualizacion_de_estado():
+    print("\n--- Actualizar estado del expediente ---")
+    codigo = input("Ingrese el código del expediente: ").strip().upper()
+
+# 6. Menu principal
 def menu():
     while True:
         print("\n===== MESA DE PARTES DIGITAL =====")
