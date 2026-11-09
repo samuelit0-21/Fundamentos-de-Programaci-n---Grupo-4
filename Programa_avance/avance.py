@@ -116,6 +116,12 @@ def Actualizacion_de_estado():
 for expediente in expedientes:
     if expediente["codigo"] == codigo:
         print("\nExpediente encontrado.")
+        print("Seleccione el nuevo estado:")
+        print("1. Pendiente")
+        print("2. En proceso")
+        print("3. Atendido")
+        
+        opcion = input("Ingrese la opcion: ")
 # 6. Menu principal
 def menu():
     while True:
