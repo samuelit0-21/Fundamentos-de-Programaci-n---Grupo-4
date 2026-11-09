@@ -122,6 +122,19 @@ for expediente in expedientes:
         print("3. Atendido")
         
         opcion = input("Ingrese la opcion: ")
+        if opcion == "1":
+                expediente["estado"] = "Pendiente"
+
+            elif opcion == "2":
+                expediente["estado"] = "En proceso"
+
+            elif opcion == "3":
+                expediente["estado"] = "Atendido"
+
+            else:
+                print("Error: opción no válida.")
+                return
+print("Error: el expediente no existe.")
 # 6. Menu principal
 def menu():
     while True:
