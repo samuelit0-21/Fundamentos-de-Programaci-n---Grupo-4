@@ -126,7 +126,13 @@ def eliminar_expediente():
     if encontrado is None:
         print("No se encontro el expediente.")
         return
-
+    
+    # Mostrar los datos del expediente encontrado
+    print("\nExpediente encontrado:")
+    print("Codigo:", encontrado["codigo"])
+    print("Ciudadano:", encontrado["nombre"])
+    print("DNI:", encontrado["dni"])
+    print("Asunto:", encontrado["asunto"])
 
 
 # Buscamos el expediente
