@@ -115,6 +115,7 @@ def Actualizacion_de_estado():
 #  Eliminar un expediente
 def eliminar_expediente():
     print("\n--- ELIMINAR EXPEDIENTE ---")
+    codigo = input("Ingrese el codigo del expediente a eliminar: ").strip().upper()
 
 
 # Buscamos el expediente
