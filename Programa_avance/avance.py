@@ -136,16 +136,17 @@ def eliminar_expediente():
 
 
 # Buscamos el expediente
-for expediente in expedientes:
-    if expediente["codigo"] == codigo:
-        print("\nExpediente encontrado.")
-        print("Seleccione el nuevo estado:")
-        print("1. Pendiente")
-        print("2. En proceso")
-        print("3. Atendido")
-        
-        opcion = input("Ingrese la opcion: ")
-        if opcion == "1":
+    for expediente in expedientes:
+        if expediente["codigo"] == codigo:
+            print("\nExpediente encontrado.")
+            print("Seleccione el nuevo estado:")
+            print("1. Pendiente")
+            print("2. En proceso")
+            print("3. Atendido")
+
+            opcion = input("Ingrese la opción: ")
+
+            if opcion == "1":
                 expediente["estado"] = "Pendiente"
 
             elif opcion == "2":
@@ -157,7 +158,12 @@ for expediente in expedientes:
             else:
                 print("Error: opción no válida.")
                 return
-print("Error: el expediente no existe.")
+
+            print("¡Estado actualizado correctamente!")
+            print("Nuevo estado:", expediente["estado"])
+            return
+
+    print("Error: el expediente no existe.")
 # 6. Menu principal
 def menu():
     while True:
