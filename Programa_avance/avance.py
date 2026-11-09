@@ -64,6 +64,13 @@ def buscar_por_dni():
 
     dni = input("Ingrese el DNI del ciudadano: ").strip()
 
+    # Validamos que el DNI tenga 8 numeros
+    if len(dni) != 8 or not dni.isdigit():
+        print("Error: el DNI debe tener 8 numeros.")
+        return
+
+    encontrado = False
+    
 # 3. Ordenar expedientes por codigo
 def ordenar_expedientes():
     print("\n--- ORDENAR EXPEDIENTES ---")
