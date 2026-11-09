@@ -148,7 +148,8 @@ def menu():
         print("2. Buscar expediente")
         print("3. Ordenar expedientes")
         print("4. Mostrar expedientes")
-        print("5. Salir")
+        print("5. Actualizar el expediente")
+        print("6. Salir")
 
         opcion = input("Seleccione una opcion: ").strip()
 
@@ -165,6 +166,9 @@ def menu():
             mostrar_expedientes()
 
         elif opcion == "5":
+            Actualizacion_de_estado()
+            
+        elif opcion == "6":
             print("Gracias por utilizar el sistema.")
             break
 
