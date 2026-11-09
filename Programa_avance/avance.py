@@ -58,26 +58,12 @@ def registrar_expediente():
 
     print("Expediente registrado correctamente.")
     
-# 2. Buscar un expediente
-def buscar_expediente():
-    print("\n--- BUSCAR EXPEDIENTE ---")
+# 3. Buscar expediente por DNI
+def buscar_por_dni():
+    print("\n--- BUSCAR EXPEDIENTE POR DNI ---")
 
-    codigo = input("Ingrese el codigo que desea buscar: ").strip().upper()
-    encontrado = False
+    dni = input("Ingrese el DNI del ciudadano: ").strip()
 
-    for expediente in expedientes:
-        if expediente["codigo"] == codigo:
-            print("\nExpediente encontrado:")
-            print("Codigo:", expediente["codigo"])
-            print("Ciudadano:", expediente["nombre"])
-            print("DNI:", expediente["dni"])
-            print("Asunto:", expediente["asunto"])
-
-            encontrado = True
-            break
-
-    if encontrado == False:
-        print("No se encontro el expediente.")
 # 3. Ordenar expedientes por codigo
 def ordenar_expedientes():
     print("\n--- ORDENAR EXPEDIENTES ---")
