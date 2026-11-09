@@ -112,6 +112,11 @@ def Actualizacion_de_estado():
     print("\n--- Actualizar estado del expediente ---")
     codigo = input("Ingrese el código del expediente: ").strip().upper()
 
+#  Eliminar un expediente
+def eliminar_expediente():
+    print("\n--- ELIMINAR EXPEDIENTE ---")
+
+
 # Buscamos el expediente
 for expediente in expedientes:
     if expediente["codigo"] == codigo:
