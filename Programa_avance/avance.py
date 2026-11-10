@@ -259,7 +259,7 @@ def menu():
             actualizar_estado()
 
         elif opcion == "7":
-            eliminar_expediente(
+            eliminar_expediente()
 
         elif opcion == "8":
             print("Gracias por utilizar el sistema.")
