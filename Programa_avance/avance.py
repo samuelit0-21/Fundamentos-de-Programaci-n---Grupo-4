@@ -214,18 +214,8 @@ def eliminar_expediente():
     print("Asunto:", encontrado["asunto"])
     print("Estado:", encontrado["estado"])
 
-    # Solicitamos confirmacion
-    confirmacion = input("¿Esta seguro de eliminarlo? (S/N): ").strip().upper()
-
-    if confirmacion == "S":
-        expedientes.remove(encontrado)
-        print("Expediente eliminado correctamente.")
-
-    elif confirmacion == "N":
-        print("Se cancelo la eliminacion.")
-
-    else:
-        print("Opcion no valida. No se elimino el expediente.")
+    # Solicitar confirmación al usuario
+    confirmacion = input("\n¿Desea eliminar este expediente? (S/N): ").strip().upper()
 
 
 # 8. Menu principal
