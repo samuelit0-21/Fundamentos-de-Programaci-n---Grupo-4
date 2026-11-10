@@ -131,7 +131,7 @@ def eliminar_expediente():
     print("Ciudadano:", encontrado["nombre"])
     print("DNI:", encontrado["dni"])
     print("Asunto:", encontrado["asunto"])
-    print("Estado:"; encontrado["estado"])
+    print("Estado:", encontrado["estado"])
 
 
 # Buscamos el expediente
