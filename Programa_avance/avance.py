@@ -87,7 +87,9 @@ def buscar_por_dni():
 
             encontrado = True
 
-
+    if encontrado == False:
+        print("No se encontraron expedientes para este DNI.")
+        
 # 3. Ordenar expedientes por codigo
 def ordenar_expedientes():
     print("\n--- ORDENAR EXPEDIENTES ---")
