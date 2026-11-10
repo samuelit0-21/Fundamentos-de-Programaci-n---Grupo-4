@@ -222,6 +222,9 @@ def eliminar_expediente():
         expedientes.remove(encontrado)
         print("Expediente eliminado correctamente.")
 
+    else:
+        print("Operacion cancelada. El expediente no fue eliminado.")
+
 
 # 8. Menu principal
 def menu():
