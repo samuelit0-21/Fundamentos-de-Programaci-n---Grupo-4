@@ -1,4 +1,5 @@
-# Mesa de Partes Digital
+
+# MESA DE PARTES DIGITAL
 
 # Expedientes de ejemplo
 expedientes = [
@@ -24,6 +25,7 @@ expedientes = [
         "estado": "Pendiente"
     }
 ]
+
 # 1. Registrar un expediente
 def registrar_expediente():
     print("\n--- REGISTRAR EXPEDIENTE ---")
@@ -61,7 +63,31 @@ def registrar_expediente():
     expedientes.append(nuevo_expediente)
 
     print("Expediente registrado correctamente.")
-    
+
+
+# 2. Buscar un expediente por codigo
+def buscar_expediente():
+    print("\n--- BUSCAR EXPEDIENTE POR CODIGO ---")
+
+    codigo = input("Ingrese el codigo que desea buscar: ").strip().upper()
+    encontrado = False
+
+    for expediente in expedientes:
+        if expediente["codigo"] == codigo:
+            print("\nExpediente encontrado:")
+            print("Codigo:", expediente["codigo"])
+            print("Ciudadano:", expediente["nombre"])
+            print("DNI:", expediente["dni"])
+            print("Asunto:", expediente["asunto"])
+            print("Estado:", expediente["estado"])
+
+            encontrado = True
+            break
+
+    if encontrado == False:
+        print("No se encontro el expediente.")
+
+
 # 3. Buscar expediente por DNI
 def buscar_por_dni():
     print("\n--- BUSCAR EXPEDIENTE POR DNI ---")
@@ -74,23 +100,25 @@ def buscar_por_dni():
         return
 
     encontrado = False
-    
- # Buscamos los expedientes asociados al DNI
+
+    # Buscamos los expedientes asociados al DNI
     for expediente in expedientes:
         if expediente["dni"] == dni:
-            
+
             print("\nExpediente encontrado:")
             print("Codigo:", expediente["codigo"])
             print("Ciudadano:", expediente["nombre"])
             print("DNI:", expediente["dni"])
             print("Asunto:", expediente["asunto"])
+            print("Estado:", expediente["estado"])
 
             encontrado = True
 
     if encontrado == False:
         print("No se encontraron expedientes para este DNI.")
-        
-# 3. Ordenar expedientes por codigo
+
+
+# 4. Ordenar expedientes por codigo
 def ordenar_expedientes():
     print("\n--- ORDENAR EXPEDIENTES ---")
 
@@ -104,7 +132,8 @@ def ordenar_expedientes():
     print("Expedientes ordenados por codigo.")
     mostrar_expedientes()
 
-# 4. Mostrar todos los expedientes
+
+# 5. Mostrar todos los expedientes
 def mostrar_expedientes():
     print("\n--- LISTA DE EXPEDIENTES ---")
 
@@ -120,45 +149,24 @@ def mostrar_expedientes():
         print("Asunto:", expediente["asunto"])
         print("Estado:", expediente["estado"])
 
-# 5. Actualizacion de estado del expediente
-def Actualizacion_de_estado():
-    print("\n--- Actualizar estado del expediente ---")
-    codigo = input("Ingrese el código del expediente: ").strip().upper()
 
-#  Eliminar un expediente
-def eliminar_expediente():
-    print("\n--- ELIMINAR EXPEDIENTE ---")
-    codigo = input("Ingrese el codigo del expediente a eliminar: ").strip().upper()
-    
-    encontrado = None
+# 6. Actualizar el estado del expediente
+def actualizar_estado():
+    print("\n--- ACTUALIZAR ESTADO DEL EXPEDIENTE ---")
+
+    codigo = input("Ingrese el codigo del expediente: ").strip().upper()
+
+    # Buscamos el expediente
     for expediente in expedientes:
         if expediente["codigo"] == codigo:
-            encontrado = expediente
-            break
-    
-    if encontrado is None:
-        print("No se encontro el expediente.")
-        return
-    
-    # Mostrar los datos del expediente encontrado
-    print("\nExpediente encontrado:")
-    print("Codigo:", encontrado["codigo"])
-    print("Ciudadano:", encontrado["nombre"])
-    print("DNI:", encontrado["dni"])
-    print("Asunto:", encontrado["asunto"])
-    print("Estado:", encontrado["estado"])
 
-
-# Buscamos el expediente
-    for expediente in expedientes:
-        if expediente["codigo"] == codigo:
             print("\nExpediente encontrado.")
             print("Seleccione el nuevo estado:")
             print("1. Pendiente")
             print("2. En proceso")
             print("3. Atendido")
 
-            opcion = input("Ingrese la opción: ")
+            opcion = input("Ingrese la opcion: ").strip()
 
             if opcion == "1":
                 expediente["estado"] = "Pendiente"
@@ -170,24 +178,68 @@ def eliminar_expediente():
                 expediente["estado"] = "Atendido"
 
             else:
-                print("Error: opción no válida.")
+                print("Error: opcion no valida.")
                 return
 
-            print("¡Estado actualizado correctamente!")
+            print("Estado actualizado correctamente.")
             print("Nuevo estado:", expediente["estado"])
             return
 
     print("Error: el expediente no existe.")
-# 6. Menu principal
+
+
+# 7. Eliminar un expediente
+def eliminar_expediente():
+    print("\n--- ELIMINAR EXPEDIENTE ---")
+
+    codigo = input("Ingrese el codigo del expediente a eliminar: ").strip().upper()
+
+    encontrado = None
+
+    # Buscamos el expediente
+    for expediente in expedientes:
+        if expediente["codigo"] == codigo:
+            encontrado = expediente
+            break
+
+    if encontrado is None:
+        print("No se encontro el expediente.")
+        return
+
+    # Mostramos los datos del expediente
+    print("\nExpediente encontrado:")
+    print("Codigo:", encontrado["codigo"])
+    print("Ciudadano:", encontrado["nombre"])
+    print("DNI:", encontrado["dni"])
+    print("Asunto:", encontrado["asunto"])
+    print("Estado:", encontrado["estado"])
+
+    # Solicitamos confirmacion
+    confirmacion = input("¿Esta seguro de eliminarlo? (S/N): ").strip().upper()
+
+    if confirmacion == "S":
+        expedientes.remove(encontrado)
+        print("Expediente eliminado correctamente.")
+
+    elif confirmacion == "N":
+        print("Se cancelo la eliminacion.")
+
+    else:
+        print("Opcion no valida. No se elimino el expediente.")
+
+
+# 8. Menu principal
 def menu():
     while True:
         print("\n===== MESA DE PARTES DIGITAL =====")
         print("1. Registrar expediente")
-        print("2. Buscar expediente")
-        print("3. Ordenar expedientes")
-        print("4. Mostrar expedientes")
-        print("5. Actualizar el expediente")
-        print("6. Salir")
+        print("2. Buscar expediente por codigo")
+        print("3. Buscar expediente por DNI")
+        print("4. Ordenar expedientes")
+        print("5. Mostrar expedientes")
+        print("6. Actualizar estado del expediente")
+        print("7. Eliminar expediente")
+        print("8. Salir")
 
         opcion = input("Seleccione una opcion: ").strip()
 
@@ -198,17 +250,30 @@ def menu():
             buscar_expediente()
 
         elif opcion == "3":
-            ordenar_expedientes()
+            buscar_por_dni()
 
         elif opcion == "4":
-            mostrar_expedientes()
+            ordenar_expedientes()
 
         elif opcion == "5":
-            Actualizacion_de_estado()
-            
+            mostrar_expedientes()
+
         elif opcion == "6":
+            actualizar_estado()
+
+        elif opcion == "7":
+            eliminar_expediente()
+
+        elif opcion == "8":
             print("Gracias por utilizar el sistema.")
             break
+
+        else:
+            print("Opcion no valida. Intente nuevamente.")
+
+
+# Iniciar el programa
+menu()
 
         else:
             print("Opcion no valida. Intente nuevamente.")
