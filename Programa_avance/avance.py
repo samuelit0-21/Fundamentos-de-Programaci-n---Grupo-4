@@ -217,13 +217,12 @@ def eliminar_expediente():
     # Solicitar confirmación al usuario
     confirmacion = input("\n¿Desea eliminar este expediente? (S/N): ").strip().upper()
     
-    # Eliminar el registro si el usuario confirma
+    # Eliminar o conservar según la respuesta
     if confirmacion == "S" or confirmacion == "SI":
         expedientes.remove(encontrado)
-        print("Expediente eliminado correctamente.")
-
+        print("Expediente eliminado correctamente.")          # Mensaje de éxito
     else:
-        print("Operacion cancelada. El expediente no fue eliminado.")
+        print("Operacion cancelada. El expediente no fue eliminado.")  # Mensaje de cancelación
 
 
 # 8. Menu principal
