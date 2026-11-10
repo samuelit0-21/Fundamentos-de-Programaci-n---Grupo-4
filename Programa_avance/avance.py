@@ -6,19 +6,22 @@ expedientes = [
         "codigo": "EXP001",
         "nombre": "Juan Perez",
         "dni": "12345678",
-        "asunto": "Solicitud de informacion"
+        "asunto": "Solicitud de informacion",
+        "estado": "Pendiente"
     },
     {
         "codigo": "EXP002",
         "nombre": "Maria Lopez",
         "dni": "87654321",
-        "asunto": "Solicitud de licencia"
+        "asunto": "Solicitud de licencia",
+        "estado": "Pendiente"
     },
     {
         "codigo": "EXP003",
         "nombre": "Ana Torres",
         "dni": "45612378",
-        "asunto": "Reclamo administrativo"
+        "asunto": "Reclamo administrativo",
+        "estado": "Pendiente"
     }
 ]
 # 1. Registrar un expediente
@@ -51,7 +54,8 @@ def registrar_expediente():
         "codigo": codigo,
         "nombre": nombre,
         "dni": dni,
-        "asunto": asunto
+        "asunto": asunto,
+        "estado": "Pendiente"
     }
 
     expedientes.append(nuevo_expediente)
@@ -99,6 +103,7 @@ def mostrar_expedientes():
         print("Ciudadano:", expediente["nombre"])
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
+        print("Estado:", expediente["estado"])
 
 # 5. Actualizacion de estado del expediente
 def Actualizacion_de_estado():
@@ -126,6 +131,7 @@ def eliminar_expediente():
     print("Ciudadano:", encontrado["nombre"])
     print("DNI:", encontrado["dni"])
     print("Asunto:", encontrado["asunto"])
+    print("Estado:"; encontrado["estado"])
 
 
 # Buscamos el expediente
