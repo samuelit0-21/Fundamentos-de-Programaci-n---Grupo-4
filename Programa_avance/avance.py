@@ -272,5 +272,3 @@ def menu():
 # Iniciar el programa
 menu()
 
-        else:
-            print("Opcion no valida. Intente nuevamente.")
