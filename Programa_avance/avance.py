@@ -78,6 +78,15 @@ def buscar_por_dni():
  # Buscamos los expedientes asociados al DNI
     for expediente in expedientes:
         if expediente["dni"] == dni:
+            
+            print("\nExpediente encontrado:")
+            print("Codigo:", expediente["codigo"])
+            print("Ciudadano:", expediente["nombre"])
+            print("DNI:", expediente["dni"])
+            print("Asunto:", expediente["asunto"])
+
+            encontrado = True
+
 
 # 3. Ordenar expedientes por codigo
 def ordenar_expedientes():
