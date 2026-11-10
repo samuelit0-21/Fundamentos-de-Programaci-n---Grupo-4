@@ -235,7 +235,7 @@ def menu():
         print("4. Ordenar expedientes")
         print("5. Mostrar expedientes")
         print("6. Actualizar estado del expediente")
-
+        print("7. Eliminar expediente")
         print("8. Salir")
 
         opcion = input("Seleccione una opcion: ").strip()
@@ -258,7 +258,8 @@ def menu():
         elif opcion == "6":
             actualizar_estado()
 
-
+        elif opcion == "7":
+            eliminar_expediente(
 
         elif opcion == "8":
             print("Gracias por utilizar el sistema.")
