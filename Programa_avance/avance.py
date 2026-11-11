@@ -28,6 +28,13 @@ expedientes = [
 
 # 1. Registrar un expediente
 def registrar_expediente():
+     """
+    Registra un nuevo expediente en el sistema.
+
+    Solicita el código, nombre del ciudadano, DNI y asunto.
+    Valida que los datos sean correctos y que el código
+    no esté repetido antes de guardar el expediente.
+    """
     print("\n--- REGISTRAR EXPEDIENTE ---")
 
     codigo = input("Ingrese el codigo: ").strip().upper()
@@ -67,6 +74,12 @@ def registrar_expediente():
 
 # 2. Buscar un expediente por codigo
 def buscar_expediente():
+    """
+    Busca un expediente utilizando su código.
+
+    Recorre la lista de expedientes y muestra todos
+    los datos del expediente si encuentra una coincidencia.
+    """
     print("\n--- BUSCAR EXPEDIENTE POR CODIGO ---")
 
     codigo = input("Ingrese el codigo que desea buscar: ").strip().upper()
@@ -90,6 +103,12 @@ def buscar_expediente():
 
 # 3. Buscar expediente por DNI
 def buscar_por_dni():
+    """
+    Busca los expedientes asociados al DNI de un ciudadano.
+
+    Verifica que el DNI tenga 8 dígitos y muestra
+    todos los expedientes que pertenecen a ese ciudadano.
+    """
     print("\n--- BUSCAR EXPEDIENTE POR DNI ---")
 
     dni = input("Ingrese el DNI del ciudadano: ").strip()
@@ -120,6 +139,12 @@ def buscar_por_dni():
 
 # MODIFICAR EXPEDIENTE - PRIMERA PARTE
 def modificar_expediente():
+    """
+    Permite modificar los datos personales de un expediente.
+
+    Busca el expediente mediante su código y solicita
+    los nuevos datos del ciudadano.
+    """
     print("\n--- MODIFICAR DATOS DEL EXPEDIENTE ---")
 
     # 1. Solicitar el codigo del expediente
@@ -160,6 +185,12 @@ def modificar_expediente():
 
 # 4. Ordenar expedientes por codigo
 def ordenar_expedientes():
+    """
+    Ordena los expedientes de manera ascendente por código.
+
+    Utiliza el algoritmo Bubble Sort para comparar
+    e intercambiar los elementos de la lista.
+    """
     print("\n--- ORDENAR EXPEDIENTES ---")
 
     for i in range(len(expedientes)):
@@ -175,6 +206,12 @@ def ordenar_expedientes():
 
 # 5. Mostrar todos los expedientes
 def mostrar_expedientes():
+    """
+    Muestra todos los expedientes registrados en el sistema.
+
+    Si la lista está vacía, informa que no existen
+    expedientes registrados.
+    """
     print("\n--- LISTA DE EXPEDIENTES ---")
 
     if len(expedientes) == 0:
@@ -192,6 +229,12 @@ def mostrar_expedientes():
 
 # 6. Actualizar el estado del expediente
 def actualizar_estado():
+    """
+    Actualiza el estado de un expediente existente.
+
+    Permite seleccionar entre tres estados:
+    Pendiente, En proceso y Atendido.
+    """
     print("\n--- ACTUALIZAR ESTADO DEL EXPEDIENTE ---")
 
     codigo = input("Ingrese el codigo del expediente: ").strip().upper()
@@ -230,6 +273,12 @@ def actualizar_estado():
 
 # 7. Eliminar un expediente
 def eliminar_expediente():
+    """
+    Elimina un expediente mediante su código.
+
+    Primero muestra sus datos y solicita confirmación
+    al usuario antes de realizar la eliminación.
+    """
     print("\n--- ELIMINAR EXPEDIENTE ---")
 
     codigo = input("Ingrese el codigo del expediente a eliminar: ").strip().upper()
@@ -267,6 +316,13 @@ def eliminar_expediente():
 
 # 8. Menu principal
 def menu():
+    """
+    Presenta el menú principal de Mesa de Partes Digital.
+
+    Permite ejecutar las diferentes funciones del sistema
+    mediante opciones seleccionadas por el usuario.
+    El menú continúa ejecutándose hasta seleccionar salir.
+    """
     while True:
         print("\n===== MESA DE PARTES DIGITAL =====")
         print("1. Registrar expediente")
