@@ -118,6 +118,46 @@ def buscar_por_dni():
         print("No se encontraron expedientes para este DNI.")
 
 
+# MODIFICAR EXPEDIENTE - PRIMERA PARTE
+def modificar_expediente():
+    print("\n--- MODIFICAR DATOS DEL EXPEDIENTE ---")
+
+    # 1. Solicitar el codigo del expediente
+    codigo = input("Ingrese el codigo del expediente: ").strip().upper()
+
+    # 2. Buscar el expediente en la lista
+    encontrado = None
+
+    for expediente in expedientes:
+        if expediente["codigo"] == codigo:
+            encontrado = expediente
+            break
+
+    if encontrado is None:
+        print("Error: el expediente no existe.")
+        return
+
+    print("\nExpediente encontrado:")
+    print("Codigo:", encontrado["codigo"])
+    print("Ciudadano:", encontrado["nombre"])
+    print("DNI:", encontrado["dni"])
+    print("Asunto:", encontrado["asunto"])
+
+    # 3. Solicitar los nuevos datos
+    print("\nIngrese los nuevos datos:")
+
+    nuevo_nombre = input("Nuevo nombre: ").strip()
+    nuevo_dni = input("Nuevo DNI: ").strip()
+    nuevo_asunto = input("Nuevo asunto: ").strip()
+
+    # 4. Validar que los campos no esten vacios
+    if nuevo_nombre == "" or nuevo_dni == "" or nuevo_asunto == "":
+        print("Error: los campos no pueden estar vacios.")
+        return
+
+    print("Datos ingresados correctamente.")
+    print("Pendiente: validar el DNI y guardar los cambios.")
+
 # 4. Ordenar expedientes por codigo
 def ordenar_expedientes():
     print("\n--- ORDENAR EXPEDIENTES ---")
