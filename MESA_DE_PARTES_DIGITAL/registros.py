@@ -1,7 +1,7 @@
 # MESA DE PARTES DIGITAL
 
 # Importamos la lista de expedientes
-from datos import expedientes
+from datos import expedientes from almacenamiento import guardar_expedientes
 
 
 def registrar_expediente():
@@ -41,6 +41,7 @@ def registrar_expediente():
 
     # Agregar el nuevo expediente a la lista
     expedientes.append(nuevo_expediente)
+    guardar_expedientes(expedientes)
 
     print("Expediente registrado correctamente.")
     print("Estado inicial: Pendiente")
