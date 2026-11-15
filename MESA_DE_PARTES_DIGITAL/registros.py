@@ -1,7 +1,8 @@
 # MESA DE PARTES DIGITAL
 
 # Importamos la lista de expedientes
-from datos import expedientes from almacenamiento import guardar_expedientes
+from datos import expedientes
+from almacenamiento import guardar_expedientes
 
 
 def registrar_expediente():
