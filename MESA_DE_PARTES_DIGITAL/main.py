@@ -6,6 +6,7 @@ from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes
 from ordenamiento import ordenar_expedientes
 from modificaciones import modificar_expediente
 from eliminaciones import eliminar_expediente
+from actualizacion_estado import actualizar_estado
 
 
 def mostrar_menu():
@@ -21,7 +22,8 @@ def mostrar_menu():
     print("5. Buscar expediente por DNI")
     print("6. Modificar datos del expediente")
     print("7. Eliminar expediente")
-    print("8. Salir")
+    print("8. Actualizar estado del expediente")
+    print("9. Salir")
     print("====================================")
 
 
@@ -55,6 +57,9 @@ def menu():
             eliminar_expediente()
 
         elif opcion == "8":
+            actualizar_estado()
+
+        elif opcion == "9":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
@@ -62,5 +67,5 @@ def menu():
             print("\nOpcion no valida. Intente nuevamente.")
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     menu()
