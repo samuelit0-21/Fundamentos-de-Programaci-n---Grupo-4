@@ -3,7 +3,7 @@
 
 # Importamos las funciones de los diferentes modulos
 from registros import registrar_expediente
-from consultas import buscar_expediente, mostrar_expedientes
+from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes
 from ordenamiento import ordenar_expedientes
 
 
@@ -17,7 +17,8 @@ def mostrar_menu():
     print("2. Buscar expediente por codigo")
     print("3. Ordenar expedientes por codigo")
     print("4. Mostrar todos los expedientes")
-    print("5. Salir")
+    print("5. Buscar expediente por DNI")
+    print("6. Salir")
     print("====================================")
 
 
@@ -42,6 +43,9 @@ def menu():
             mostrar_expedientes()
 
         elif opcion == "5":
+            buscar_por_dni()
+
+        elif opcion == "6":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
@@ -49,6 +53,5 @@ def menu():
             print("\nOpcion no valida. Intente nuevamente.")
 
 
-# Ejecutar el programa principal
 if __name__ == "__main__":
     menu()
