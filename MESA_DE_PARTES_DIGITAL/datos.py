@@ -1,4 +1,7 @@
+
 # MESA DE PARTES DIGITAL
 
-# Lista donde se almacenaran los expedientes
-expedientes = []
+from almacenamiento import cargar_expedientes
+
+# Lista que recupera los expedientes almacenados
+expedientes = cargar_expedientes()
