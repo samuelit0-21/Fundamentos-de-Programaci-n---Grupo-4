@@ -5,6 +5,7 @@
 from registros import registrar_expediente
 from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes
 from ordenamiento import ordenar_expedientes
+from modificaciones import modificar_expediente
 
 
 def mostrar_menu():
@@ -18,7 +19,8 @@ def mostrar_menu():
     print("3. Ordenar expedientes por codigo")
     print("4. Mostrar todos los expedientes")
     print("5. Buscar expediente por DNI")
-    print("6. Salir")
+    print("6. Modificar datos del expediente")
+    print("7. Salir")
     print("====================================")
 
 
@@ -46,6 +48,9 @@ def menu():
             buscar_por_dni()
 
         elif opcion == "6":
+            modificar_expediente()
+
+        elif opcion == "7":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
