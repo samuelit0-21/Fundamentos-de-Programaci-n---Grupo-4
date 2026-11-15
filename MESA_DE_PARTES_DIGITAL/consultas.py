@@ -1,3 +1,4 @@
+
 # MESA DE PARTES DIGITAL
 
 # Importamos la lista de expedientes
@@ -18,10 +19,38 @@ def buscar_expediente():
             print("Nombre:", expediente["nombre"])
             print("DNI:", expediente["dni"])
             print("Asunto:", expediente["asunto"])
-            print("Estado:", expediente["estado"])
+            print("Estado:", expediente.get("estado", "Pendiente"))
             return
 
     print("No se encontro el expediente.")
+
+
+def buscar_por_dni():
+    """Busca expedientes mediante el DNI del solicitante."""
+
+    print("\n--- BUSQUEDA POR DNI ---")
+
+    dni = input("Ingrese el DNI del solicitante: ").strip()
+
+    if not dni.isdigit() or len(dni) != 8:
+        print("El DNI debe tener exactamente 8 digitos numericos.")
+        return
+
+    encontrado = False
+
+    for expediente in expedientes:
+        if expediente["dni"] == dni:
+            print("\nExpediente encontrado:")
+            print("Codigo:", expediente["codigo"])
+            print("Nombre:", expediente["nombre"])
+            print("DNI:", expediente["dni"])
+            print("Asunto:", expediente["asunto"])
+            print("Estado:", expediente.get("estado", "Pendiente"))
+            encontrado = True
+
+    if not encontrado:
+        print("No se encontraron expedientes con ese DNI.")
+
 
 def mostrar_expedientes():
     """Muestra todos los expedientes registrados."""
@@ -38,4 +67,5 @@ def mostrar_expedientes():
         print("Nombre:", expediente["nombre"])
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
-        print("Estado:", expediente["estado"])
+        print("Estado:", expediente.get("estado", "Pendiente"))
+
