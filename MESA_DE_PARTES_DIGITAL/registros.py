@@ -35,10 +35,12 @@ def registrar_expediente():
         "codigo": codigo,
         "nombre": nombre,
         "dni": dni,
-        "asunto": asunto
+        "asunto": asunto,
+        "estado": "Pendiente"
     }
 
-    # Agregar el expediente a la lista
+    # Agregar el nuevo expediente a la lista
     expedientes.append(nuevo_expediente)
 
     print("Expediente registrado correctamente.")
+    print("Estado inicial: Pendiente")
