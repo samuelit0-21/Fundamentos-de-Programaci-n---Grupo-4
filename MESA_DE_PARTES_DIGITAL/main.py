@@ -1,4 +1,3 @@
-
 # MESA DE PARTES DIGITAL
 
 # Importamos las funciones de los diferentes modulos
@@ -6,6 +5,7 @@ from registros import registrar_expediente
 from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes
 from ordenamiento import ordenar_expedientes
 from modificaciones import modificar_expediente
+from eliminaciones import eliminar_expediente
 
 
 def mostrar_menu():
@@ -20,7 +20,8 @@ def mostrar_menu():
     print("4. Mostrar todos los expedientes")
     print("5. Buscar expediente por DNI")
     print("6. Modificar datos del expediente")
-    print("7. Salir")
+    print("7. Eliminar expediente")
+    print("8. Salir")
     print("====================================")
 
 
@@ -51,6 +52,9 @@ def menu():
             modificar_expediente()
 
         elif opcion == "7":
+            eliminar_expediente()
+
+        elif opcion == "8":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
