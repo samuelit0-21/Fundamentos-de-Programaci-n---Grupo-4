@@ -1,4 +1,3 @@
-
 # MESA DE PARTES DIGITAL
 
 # Importamos la lista de expedientes
@@ -68,4 +67,3 @@ def mostrar_expedientes():
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
         print("Estado:", expediente.get("estado", "Pendiente"))
-
