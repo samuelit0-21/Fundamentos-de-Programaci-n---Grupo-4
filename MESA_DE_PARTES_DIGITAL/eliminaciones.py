@@ -1,7 +1,7 @@
 # MESA DE PARTES DIGITAL
 
-# Importamos la lista de expedientes
 from datos import expedientes
+from almacenamiento import guardar_expedientes
 
 
 def eliminar_expediente():
@@ -9,10 +9,8 @@ def eliminar_expediente():
 
     print("\n--- ELIMINACION DE EXPEDIENTE ---")
 
-    # Solicitar el codigo del expediente
     codigo = input("Ingrese el codigo del expediente: ").strip().upper()
 
-    # Buscar el expediente en la lista
     expediente_encontrado = None
 
     for expediente in expedientes:
@@ -20,26 +18,26 @@ def eliminar_expediente():
             expediente_encontrado = expediente
             break
 
-    # Verificar si el expediente existe
     if expediente_encontrado is None:
         print("No se encontro el expediente.")
         return
 
-    # Mostrar los datos del expediente encontrado
     print("\n--- DATOS DEL EXPEDIENTE ---")
     print("Codigo:", expediente_encontrado["codigo"])
     print("Nombre:", expediente_encontrado["nombre"])
     print("DNI:", expediente_encontrado["dni"])
     print("Asunto:", expediente_encontrado["asunto"])
 
-    # Solicitar confirmacion antes de eliminar
     confirmacion = input(
         "\n¿Esta seguro de eliminar este expediente? (S/N): "
     ).strip().upper()
 
-    # Eliminar o cancelar la operacion
     if confirmacion == "S":
         expedientes.remove(expediente_encontrado)
+
+        # Guardar los cambios en el archivo JSON
+        guardar_expedientes(expedientes)
+
         print("Expediente eliminado correctamente.")
 
     elif confirmacion == "N":
