@@ -50,6 +50,33 @@ def buscar_por_dni():
     if not encontrado:
         print("No se encontraron expedientes con ese DNI.")
 
+def buscar_por_nombre():
+    print("\n--- BUSCAR EXPEDIENTE POR NOMBRE ---")
+
+    nombre_buscar = input("Ingrese el nombre del solicitante: ").strip()
+
+    if not nombre_buscar:
+        print("Error: debe ingresar un nombre.")
+        return
+
+    encontrado = False
+
+    for expediente in expedientes:
+
+        if nombre_buscar.lower() in expediente["nombre"].lower():
+
+            print("\n--- EXPEDIENTE ENCONTRADO ---")
+            print("Código:", expediente["codigo"])
+            print("Nombre:", expediente["nombre"])
+            print("DNI:", expediente["dni"])
+            print("Asunto:", expediente["asunto"])
+            print("Estado:", expediente["estado"])
+
+            encontrado = True
+
+    if not encontrado:
+        print("No se encontraron expedientes con ese nombre.")
+
 
 def mostrar_expedientes():
     """Muestra todos los expedientes registrados."""
