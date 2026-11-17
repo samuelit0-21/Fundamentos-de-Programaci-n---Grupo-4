@@ -1,6 +1,7 @@
 # MESA DE PARTES DIGITAL
-# Importamos la libreria datetime
-from datatime import datetime
+
+from datetime import datetime
+
 # Importamos la lista de expedientes
 from datos import expedientes
 from almacenamiento import guardar_expedientes
@@ -32,17 +33,17 @@ def registrar_expediente():
             print("El codigo ya se encuentra registrado.")
             return
 
-    # Obtener automáticamente la fecha actual del sistema (Paso 3)
-    fecha_actual = datetime.now()
-    
-    # Crear el nuevo expediente
+    # Obtener la fecha actual y formatearla a DD/MM/AAAA (Pasos 3 y 4)
+    fecha_ingreso_formateada = datetime.now().strftime("%d/%m/%Y")
+
+    # Crear el nuevo expediente con la fecha incorporada (Pasos 2 y 4)
     nuevo_expediente = {
         "codigo": codigo,
         "nombre": nombre,
         "dni": dni,
         "asunto": asunto,
-        "estado": "Pendiente"
-        "fecha_ingreso": ""  # Aqui se va a incorporar el campo para la fecha
+        "estado": "Pendiente",
+        "fecha_ingreso": fecha_ingreso_formateada,
     }
 
     # Agregar el nuevo expediente a la lista
@@ -50,4 +51,5 @@ def registrar_expediente():
     guardar_expedientes(expedientes)
 
     print("Expediente registrado correctamente.")
+    print(f"Fecha de ingreso: {fecha_ingreso_formateada}")
     print("Estado inicial: Pendiente")
