@@ -32,6 +32,9 @@ def registrar_expediente():
             print("El codigo ya se encuentra registrado.")
             return
 
+    # Obtener automáticamente la fecha actual del sistema (Paso 3)
+    fecha_actual = datetime.now()
+    
     # Crear el nuevo expediente
     nuevo_expediente = {
         "codigo": codigo,
