@@ -1,5 +1,6 @@
 # MESA DE PARTES DIGITAL
-
+# Importamos la libreria datetime
+from datatime import datetime
 # Importamos la lista de expedientes
 from datos import expedientes
 from almacenamiento import guardar_expedientes
