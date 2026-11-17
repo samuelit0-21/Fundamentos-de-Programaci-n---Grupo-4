@@ -39,6 +39,7 @@ def registrar_expediente():
         "dni": dni,
         "asunto": asunto,
         "estado": "Pendiente"
+        "fecha_ingreso": ""  # Aqui se va a incorporar el campo para la fecha
     }
 
     # Agregar el nuevo expediente a la lista
