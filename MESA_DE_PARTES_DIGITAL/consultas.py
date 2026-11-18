@@ -18,6 +18,7 @@ def buscar_expediente():
             print("Nombre:", expediente["nombre"])
             print("DNI:", expediente["dni"])
             print("Asunto:", expediente["asunto"])
+            print("Fecha de ingreso:", expediente.get("fecha_ingreso", "No registrada"),)
             print("Estado:", expediente.get("estado", "Pendiente"))
             return
 
@@ -44,6 +45,7 @@ def buscar_por_dni():
             print("Nombre:", expediente["nombre"])
             print("DNI:", expediente["dni"])
             print("Asunto:", expediente["asunto"])
+            print("Fecha de ingreso:", expediente.get("fecha_ingreso", "No registrada"),)
             print("Estado:", expediente.get("estado", "Pendiente"))
             encontrado = True
 
@@ -70,6 +72,7 @@ def buscar_por_nombre():
             print("Nombre:", expediente["nombre"])
             print("DNI:", expediente["dni"])
             print("Asunto:", expediente["asunto"])
+            print("Fecha de ingreso:", expediente.get("fecha_ingreso", "No registrada"),)
             print("Estado:", expediente["estado"])
 
             encontrado = True
@@ -93,4 +96,5 @@ def mostrar_expedientes():
         print("Nombre:", expediente["nombre"])
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
+        print("Fecha de ingreso:", expediente.get("fecha_ingreso", "No registrada"),)
         print("Estado:", expediente.get("estado", "Pendiente"))
