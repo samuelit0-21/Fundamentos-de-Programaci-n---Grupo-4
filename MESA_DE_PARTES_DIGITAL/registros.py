@@ -37,7 +37,7 @@ def registrar_expediente():
     FORMATO_FECHA = "%d/%m/%Y"
     fecha_ingreso_formateada = datetime.now().strftime(FORMATO_FECHA)
 
-    # Crear el nuevo expediente con la fecha incorporada 
+# Crear el nuevo expediente con todos sus datos incluida la fecha
     nuevo_expediente = {
         "codigo": codigo,
         "nombre": nombre,
@@ -47,10 +47,10 @@ def registrar_expediente():
         "fecha_ingreso": fecha_ingreso_formateada,
     }
 
-    # Agregar el nuevo expediente a la lista
+    # Almacenar la fecha junto con los demás datos del expediente
     expedientes.append(nuevo_expediente)
     guardar_expedientes(expedientes)
 
-    print("Expediente registrado correctamente.")
-    print(f"Fecha de ingreso: {fecha_ingreso_formateada}")
+    print("Expediente y fecha de ingreso almacenados correctamente.")
+    print(f"Fecha de ingreso registrada: {nuevo_expediente['fecha_ingreso']}")
     print("Estado inicial: Pendiente")
