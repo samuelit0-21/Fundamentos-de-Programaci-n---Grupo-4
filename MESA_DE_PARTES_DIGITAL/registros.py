@@ -33,10 +33,11 @@ def registrar_expediente():
             print("El codigo ya se encuentra registrado.")
             return
 
-    # Obtener la fecha actual y formatearla a DD/MM/AAAA (Pasos 3 y 4)
-    fecha_ingreso_formateada = datetime.now().strftime("%d/%m/%Y")
+    # Establecer el formato de fecha DD/MM/AAAA
+    FORMATO_FECHA = "%d/%m/%Y"
+    fecha_ingreso_formateada = datetime.now().strftime(FORMATO_FECHA)
 
-    # Crear el nuevo expediente con la fecha incorporada (Pasos 2 y 4)
+    # Crear el nuevo expediente con la fecha incorporada 
     nuevo_expediente = {
         "codigo": codigo,
         "nombre": nombre,
