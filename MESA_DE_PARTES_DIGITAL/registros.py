@@ -6,12 +6,31 @@ from datetime import datetime
 from datos import expedientes
 from almacenamiento import guardar_expedientes
 
+import random #importamos el modulo que permite generar números aleatorio
+
+def generar_codigo_unico():
+    """Genera un código único con formato EXP-2026-XXXXXX."""
+    while True:
+        seis_digitos = str(random.randint(0, 999999)).zfill(6)
+        codigo = f"EXP-2026-{seis_digitos}"
+        
+        # Verificar que el código no exista
+        existe = False
+        for expediente in expedientes:
+            if expediente["codigo"] == codigo:
+                existe = True
+                break
+        
+        if not existe:
+            return codigo
+
 
 def registrar_expediente():
     """Permite registrar un nuevo expediente."""
 
     print("\n--- REGISTRO DE EXPEDIENTE ---")
 
+    codigo = generar_codigo_unico() 
     nombre = input("Ingrese el nombre del solicitante: ").strip()
     dni = input("Ingrese el DNI: ").strip()
     asunto = input("Ingrese el asunto: ").strip()
