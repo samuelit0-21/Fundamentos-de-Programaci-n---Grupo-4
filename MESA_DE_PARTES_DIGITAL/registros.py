@@ -55,6 +55,8 @@ def registrar_expediente():
     nombre = input("Ingrese el nombre del solicitante: ").strip()
     dni = input("Ingrese el DNI: ").strip()
     asunto = input("Ingrese el asunto: ").strip()
+    codigo = generar_codigo()
+    print("Código generado:", codigo)
 
     # Validar que los campos no esten vacios
     if not codigo or not nombre or not dni or not asunto:
