@@ -1,6 +1,7 @@
+
 # MESA DE PARTES DIGITAL
 
-# Importamos las funciones de los diferentes modulos
+# Importamos las funciones de los diferentes módulos
 from registros import registrar_expediente
 from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes
 from ordenamiento import ordenar_expedientes
@@ -11,14 +12,14 @@ from consultas import buscar_por_nombre
 
 
 def mostrar_menu():
-    """Muestra las opciones del menu principal."""
+    """Muestra las opciones del menú principal."""
 
     print("\n====================================")
     print("       MESA DE PARTES DIGITAL")
     print("====================================")
     print("1. Registrar expediente")
-    print("2. Buscar expediente por codigo")
-    print("3. Ordenar expedientes por codigo")
+    print("2. Buscar expediente por código")
+    print("3. Ordenar expedientes por código")
     print("4. Buscar expediente por nombre")
     print("5. Mostrar todos los expedientes")
     print("6. Buscar expediente por DNI")
@@ -35,7 +36,7 @@ def menu():
     while True:
         mostrar_menu()
 
-        opcion = input("Seleccione una opcion: ").strip()
+        opcion = input("Seleccione una opción: ").strip()
 
         if opcion == "1":
             registrar_expediente()
@@ -69,8 +70,11 @@ def menu():
             break
 
         else:
-            print("\nOpcion no valida. Intente nuevamente.")
+            print("\nOpción no válida. Intente nuevamente.")
 
+
+if __name__ == "__main__":
+    menu()
 
 if _name_ == "_main_":
     menu()
