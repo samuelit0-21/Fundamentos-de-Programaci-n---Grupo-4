@@ -12,7 +12,6 @@ def registrar_expediente():
 
     print("\n--- REGISTRO DE EXPEDIENTE ---")
 
-    codigo = input("Ingrese el codigo del expediente: ").strip().upper()
     nombre = input("Ingrese el nombre del solicitante: ").strip()
     dni = input("Ingrese el DNI: ").strip()
     asunto = input("Ingrese el asunto: ").strip()
