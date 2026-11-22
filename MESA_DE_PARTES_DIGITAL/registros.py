@@ -1,49 +1,126 @@
+
 # MESA DE PARTES DIGITAL
 
 from datetime import datetime
+import random
 
 # Importamos la lista de expedientes
 from datos import expedientes
 from almacenamiento import guardar_expedientes
 
-import random #importamos el modulo que permite generar números aleatorio
+
+# Categorías y trámites sugeridos
+CATEGORIAS = {
+    "1": {
+        "nombre": "Tributarios y prediales",
+        "tramites": [
+            "Consulta de impuesto predial",
+            "Consulta de arbitrios",
+            "Solicitud de fraccionamiento",
+            "Reclamo tributario"
+        ]
+    },
+    "2": {
+        "nombre": "Documentación y constancias municipales",
+        "tramites": [
+            "Solicitud de constancia",
+            "Solicitud de copia de documentos",
+            "Solicitud de información sobre documentos municipales"
+        ]
+    },
+    "3": {
+        "nombre": "Solicitudes administrativas municipales",
+        "tramites": [
+            "Solicitud dirigida a un área municipal",
+            "Presentación de documentos",
+            "Solicitud de atención administrativa"
+        ]
+    },
+    "4": {
+        "nombre": "Reclamos y consultas",
+        "tramites": [
+            "Reclamo por servicio municipal",
+            "Consulta sobre atención municipal",
+            "Reclamo por limpieza pública, parques o mantenimiento"
+        ]
+    },
+    "5": {
+        "nombre": "Otros trámites",
+        "tramites": [
+            "Otro trámite"
+        ]
+    }
+}
+
 
 def generar_codigo_unico():
-    """Genera un código único con formato EXP-2026-XXXXXX."""
+    """Genera un código único con formato EXP-AAAA-XXXXXX."""
+
+    anio = datetime.now().year
+
     while True:
         seis_digitos = str(random.randint(0, 999999)).zfill(6)
-        codigo = f"EXP-2026-{seis_digitos}"
-        
+        codigo = f"EXP-{anio}-{seis_digitos}"
+
         # Verificar que el código no exista
         existe = False
+
         for expediente in expedientes:
             if expediente["codigo"] == codigo:
                 existe = True
                 break
-        
+
         if not existe:
             return codigo
 
-# Generar código aleatorio con el año actual
-def generar_codigo():
-    anio = date.today().year
+
+def seleccionar_categoria():
+    """Muestra las categorías y permite seleccionar un trámite."""
+
+    print("\n--- CATEGORÍAS DE SOLICITUDES ---")
+
+    for numero, categoria in CATEGORIAS.items():
+        print(f"{numero}. {categoria['nombre']}")
 
     while True:
-        numero = random.randint(100000, 999999)
+        opcion = input("\nSeleccione una categoría: ").strip()
 
-        codigo = f"EXP-{anio}-{numero}"
+        if opcion in CATEGORIAS:
+            categoria_seleccionada = CATEGORIAS[opcion]
+            nombre_categoria = categoria_seleccionada["nombre"]
+            tramites = categoria_seleccionada["tramites"]
 
-        # Verificar que el código no esté repetido
-        existe = False
+            print(f"\n--- TRÁMITES: {nombre_categoria} ---")
 
-        for expediente in expedientes:
-            if expediente["codigo"] == codigo:
-                existe = True
-                break
+            for numero, tramite in enumerate(tramites, start=1):
+                print(f"{numero}. {tramite}")
 
-        # Si no existe, devolver el código
-        if not existe:
-            return codigo
+            while True:
+                opcion_tramite = input(
+                    "\nSeleccione un trámite: "
+                ).strip()
+
+                if opcion_tramite.isdigit():
+                    numero = int(opcion_tramite)
+
+                    if 1 <= numero <= len(tramites):
+                        asunto = tramites[numero - 1]
+
+                        if asunto == "Otro trámite":
+                            asunto = input(
+                                "Describa su solicitud: "
+                            ).strip()
+
+                            if not asunto:
+                                print("Debe ingresar una descripción.")
+                                continue
+
+                        return nombre_categoria, asunto
+
+                print("Seleccione una opción válida.")
+
+        else:
+            print("Categoría no válida. Intente nuevamente.")
 
 
 def registrar_expediente():
@@ -51,47 +128,47 @@ def registrar_expediente():
 
     print("\n--- REGISTRO DE EXPEDIENTE ---")
 
-    codigo = generar_codigo_unico() 
     nombre = input("Ingrese el nombre del solicitante: ").strip()
     dni = input("Ingrese el DNI: ").strip()
-    asunto = input("Ingrese el asunto: ").strip()
-    codigo = generar_codigo()
-    print("Código generado:", codigo)
 
-    # Validar que los campos no esten vacios
-    if not codigo or not nombre or not dni or not asunto:
+    # Validar que los campos no estén vacíos
+    if not nombre or not dni:
         print("Todos los campos son obligatorios.")
         return
 
-    # Validar que el DNI tenga 8 digitos numericos
+    # Validar que el DNI tenga 8 dígitos numéricos
     if not dni.isdigit() or len(dni) != 8:
-        print("El DNI debe tener exactamente 8 digitos.")
+        print("El DNI debe tener exactamente 8 dígitos.")
         return
 
-    # Verificar que el codigo no exista
-    for expediente in expedientes:
-        if expediente["codigo"] == codigo:
-            print("El codigo ya se encuentra registrado.")
-            return
+    # Seleccionar categoría y trámite
+    categoria, asunto = seleccionar_categoria()
 
-    # Establecer el formato de fecha DD/MM/AAAA
-    FORMATO_FECHA = "%d/%m/%Y"
-    fecha_ingreso_formateada = datetime.now().strftime(FORMATO_FECHA)
+    # Generar código único
+    codigo = generar_codigo_unico()
 
-# Crear el nuevo expediente con todos sus datos incluida la fecha
+    # Registrar fecha de ingreso
+    fecha_ingreso_formateada = datetime.now().strftime("%d/%m/%Y")
+
+    # Crear el nuevo expediente
     nuevo_expediente = {
         "codigo": codigo,
         "nombre": nombre,
         "dni": dni,
+        "categoria": categoria,
         "asunto": asunto,
         "estado": "Pendiente",
-        "fecha_ingreso": fecha_ingreso_formateada,
+        "fecha_ingreso": fecha_ingreso_formateada
     }
 
-    # Almacenar la fecha junto con los demás datos del expediente
+    # Almacenar el expediente
     expedientes.append(nuevo_expediente)
     guardar_expedientes(expedientes)
 
-    print("Expediente y fecha de ingreso almacenados correctamente.")
-    print(f"Fecha de ingreso registrada: {nuevo_expediente['fecha_ingreso']}")
+    print("\n¡Expediente registrado correctamente!")
+    print(f"Código generado: {codigo}")
+    print(f"Categoría: {categoria}")
+    print(f"Asunto: {asunto}")
+    print(f"Fecha de ingreso: {fecha_ingreso_formateada}")
     print("Estado inicial: Pendiente")
+
