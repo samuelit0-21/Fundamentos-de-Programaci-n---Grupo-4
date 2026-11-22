@@ -24,6 +24,27 @@ def generar_codigo_unico():
         if not existe:
             return codigo
 
+# Generar código aleatorio con el año actual
+def generar_codigo():
+    anio = date.today().year
+
+    while True:
+        numero = random.randint(100000, 999999)
+
+        codigo = f"EXP-{anio}-{numero}"
+
+        # Verificar que el código no esté repetido
+        existe = False
+
+        for expediente in expedientes:
+            if expediente["codigo"] == codigo:
+                existe = True
+                break
+
+        # Si no existe, devolver el código
+        if not existe:
+            return codigo
+
 
 def registrar_expediente():
     """Permite registrar un nuevo expediente."""
