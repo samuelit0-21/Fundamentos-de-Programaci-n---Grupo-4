@@ -75,13 +75,15 @@ def generar_codigo_unico():
 
 
 def seleccionar_categoria():
-    """Muestra las categorías y permite seleccionar un trámite."""
+    """Permite seleccionar una categoría y un trámite."""
 
     print("\n--- CATEGORÍAS DE SOLICITUDES ---")
 
+    # Mostrar las categorías disponibles
     for numero, categoria in CATEGORIAS.items():
         print(f"{numero}. {categoria['nombre']}")
 
+    # Solicitar y validar la categoría
     while True:
         opcion = input("\nSeleccione una categoría: ").strip()
 
@@ -89,38 +91,40 @@ def seleccionar_categoria():
             categoria_seleccionada = CATEGORIAS[opcion]
             nombre_categoria = categoria_seleccionada["nombre"]
             tramites = categoria_seleccionada["tramites"]
-
-            print(f"\n--- TRÁMITES: {nombre_categoria} ---")
-
-            for numero, tramite in enumerate(tramites, start=1):
-                print(f"{numero}. {tramite}")
-
-            while True:
-                opcion_tramite = input(
-                    "\nSeleccione un trámite: "
-                ).strip()
-
-                if opcion_tramite.isdigit():
-                    numero = int(opcion_tramite)
-
-                    if 1 <= numero <= len(tramites):
-                        asunto = tramites[numero - 1]
-
-                        if asunto == "Otro trámite":
-                            asunto = input(
-                                "Describa su solicitud: "
-                            ).strip()
-
-                            if not asunto:
-                                print("Debe ingresar una descripción.")
-                                continue
-
-                        return nombre_categoria, asunto
-
-                print("Seleccione una opción válida.")
+            break
 
         else:
             print("Categoría no válida. Intente nuevamente.")
+
+    # Mostrar los trámites sugeridos
+    print(f"\n--- TRÁMITES: {nombre_categoria} ---")
+
+    for numero, tramite in enumerate(tramites, start=1):
+        print(f"{numero}. {tramite}")
+
+    # Solicitar y validar el trámite
+    while True:
+        opcion_tramite = input("\nSeleccione un trámite: ").strip()
+
+        if opcion_tramite.isdigit():
+            numero = int(opcion_tramite)
+
+            if 1 <= numero <= len(tramites):
+                asunto = tramites[numero - 1]
+
+                # Permitir una descripción personalizada
+                if asunto == "Otro trámite":
+                    asunto = input(
+                        "Describa su solicitud: "
+                    ).strip()
+
+                    if not asunto:
+                        print("Debe ingresar una descripción.")
+                        continue
+
+                return nombre_categoria, asunto
+
+        print("Seleccione una opción válida.")
 
 
 def registrar_expediente():
@@ -171,4 +175,5 @@ def registrar_expediente():
     print(f"Asunto: {asunto}")
     print(f"Fecha de ingreso: {fecha_ingreso_formateada}")
     print("Estado inicial: Pendiente")
+
 
