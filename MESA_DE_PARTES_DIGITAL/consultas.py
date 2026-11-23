@@ -7,22 +7,28 @@ from datos import expedientes
 def buscar_expediente():
     """Busca un expediente mediante su codigo."""
 
-    print("\n--- BUSQUEDA POR CODIGO ---")
+    print("\n--- BUSCAR EXPEDIENTE ---")
 
-    codigo = input("Ingrese el codigo del expediente: ").strip().upper()
+    codigo = input("Ingrese el código del expediente: ").strip().upper()
 
+    # Verificar que el campo no esté vacío
+    if not codigo:
+        print("Error: debe ingresar un código.")
+        return
+
+    # Buscar el código en los expedientes registrados
     for expediente in expedientes:
-        if expediente["codigo"] == codigo:
+        if expediente["codigo"].upper() == codigo:
             print("\nExpediente encontrado:")
-            print("Codigo:", expediente["codigo"])
+            print("Código:", expediente["codigo"])
             print("Nombre:", expediente["nombre"])
             print("DNI:", expediente["dni"])
             print("Asunto:", expediente["asunto"])
-            print("Fecha de ingreso:", expediente.get("fecha_ingreso", "No registrada"),)
-            print("Estado:", expediente.get("estado", "Pendiente"))
+            print("Estado:", expediente["estado"])
             return
 
-    print("No se encontro el expediente.")
+    # Mostrar mensaje si no se encuentra
+    print("No se encontró ningún expediente con ese código.")
 
 
 def buscar_por_dni():
