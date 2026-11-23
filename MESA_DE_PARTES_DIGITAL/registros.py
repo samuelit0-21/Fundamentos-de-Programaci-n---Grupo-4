@@ -20,7 +20,7 @@ def cargar_expedientes():
 
     except FileNotFoundError:
         return []
-8aa
+
 
 # Guardar los expedientes en el archivo JSON
 def guardar_expedientes():
