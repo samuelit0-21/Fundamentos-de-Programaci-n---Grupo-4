@@ -189,9 +189,7 @@ def registrar_expediente():
     # Almacenar el expediente
     expedientes.append(nuevo_expediente)
     guardar_expedientes(expedientes)
-    expedientes.append(expediente)
-    guardar_expedientes()
-
+   
     print("Expediente registrado correctamente.")
     print("\n¡Expediente registrado correctamente!")
     print(f"Código generado: {codigo}")
