@@ -1,33 +1,12 @@
 
 # MESA DE PARTES DIGITAL
 
-import json 
 from datetime import datetime
 import random
-# Importamos la lista de expedientes
+
+# Importamos la lista de expedientes y la función de almacenamiento
 from datos import expedientes
 from almacenamiento import guardar_expedientes
-
-# Nombre del archivo JSON
-ARCHIVO_JSON = "expedientes.json"
-
-
-# Cargar los expedientes guardados
-def cargar_expedientes():
-    try:
-        with open(ARCHIVO_JSON, "r", encoding="utf-8") as archivo:
-            return json.load(archivo)
-
-    except FileNotFoundError:
-        return []
-
-
-# Guardar los expedientes en el archivo JSON
-def guardar_expedientes():
-    with open(ARCHIVO_JSON, "w", encoding="utf-8") as archivo:
-        json.dump(expedientes, archivo, indent=4, ensure_ascii=False) 
-
-expedientes = cargar_expedientes()
 
 
 # Categorías y trámites sugeridos
@@ -189,13 +168,11 @@ def registrar_expediente():
     # Almacenar el expediente
     expedientes.append(nuevo_expediente)
     guardar_expedientes(expedientes)
-   
-    print("Expediente registrado correctamente.")
+
+    # Mostrar confirmación del registro
     print("\n¡Expediente registrado correctamente!")
     print(f"Código generado: {codigo}")
     print(f"Categoría: {categoria}")
     print(f"Asunto: {asunto}")
     print(f"Fecha de ingreso: {fecha_ingreso_formateada}")
     print("Estado inicial: Pendiente")
-
-
