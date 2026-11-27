@@ -4,7 +4,7 @@
 # Importamos las funciones de los diferentes módulos
 from registros import registrar_expediente
 from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes
-from ordenamiento import ordenar_expedientes
+from ordenamiento import ordenar_expedientes_por_fecha
 from modificaciones import modificar_expediente
 from eliminaciones import eliminar_expediente
 from actualizacion_estado import actualizar_estado
