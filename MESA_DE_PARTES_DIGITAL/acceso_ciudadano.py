@@ -1,7 +1,7 @@
 # MESA DE PARTES DIGITAL
 # Módulo de acceso para el ciudadano
 
-def iniciar_sesion_ciudadano():
+def iniciar_sesion_ciudadanos():
     """Solicita DNI y nombre del ciudadano para iniciar sesión."""
     print("\n--- ACCESO CIUDADANO ---")
 
