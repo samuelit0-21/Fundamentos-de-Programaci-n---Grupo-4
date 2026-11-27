@@ -10,6 +10,7 @@ from eliminaciones import eliminar_expediente
 from actualizacion_estado import actualizar_estado
 from consultas import buscar_por_nombre
 from trabajadores import trabajadores
+from acceso_ciudadano import iniciar_sesion_ciudadano
 
 
 def mostrar_acceso_trabajador():
