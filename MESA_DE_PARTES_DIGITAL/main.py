@@ -1,4 +1,3 @@
-
 # MESA DE PARTES DIGITAL
 
 # Importamos las funciones de los diferentes módulos
@@ -15,6 +14,9 @@ from datos import expedientes
 # Importamos las cuentas de trabajadores
 from trabajadores import trabajadores
 
+# Importamos el acceso del ciudadano
+from acceso_ciudadano import iniciar_sesion_ciudadanos
+
 
 def mostrar_menu_inicial():
     """Muestra el menú inicial del programa."""
@@ -23,7 +25,8 @@ def mostrar_menu_inicial():
     print("       MESA DE PARTES DIGITAL")
     print("====================================")
     print("1. Acceso de trabajador")
-    print("2. Salir")
+    print("2. Acceso ciudadano")
+    print("3. Salir")
     print("====================================")
 
 
@@ -88,6 +91,9 @@ def menu():
                 menu_administrativo()
 
         elif opcion == "2":
+            iniciar_sesion_ciudadanos()
+
+        elif opcion == "3":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
