@@ -66,6 +66,9 @@ def menu():
             actualizar_estado()
 
         elif opcion == "10":
+            iniciar_sesion_ciudadano()
+            
+        elif opcion == "11":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
