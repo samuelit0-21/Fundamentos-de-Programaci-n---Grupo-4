@@ -155,7 +155,7 @@ def registrar_expediente():
     fecha_ingreso_formateada = datetime.now().strftime("%d/%m/%Y")
 
     # Obtener la fecha actual del registro
-    fecha_ingreso = date.today().isoformat()
+    fecha_ingreso = datetime.now().isoformat()
 
     # Crear el nuevo expediente
     nuevo_expediente = {
@@ -180,4 +180,4 @@ def registrar_expediente():
     print(f"Asunto: {asunto}")
     print(f"Fecha de ingreso: {fecha_ingreso_formateada}")
     print("Estado inicial: Pendiente")
-    print("fecha_ingreso": fecha_ingreso)
+    print(f"Fecha de ingreso: {fecha_ingreso}")
