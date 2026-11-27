@@ -4,31 +4,32 @@
 # Importamos la lista de expedientes
 from datos import expedientes
 
+# Ordenar expedientes por fecha de ingreso
+def ordenar_expedientes_por_fecha(expedientes):
 
-def ordenar_expedientes():
-    """Ordena los expedientes por codigo de manera ascendente."""
-
-    print("\n--- ORDENAMIENTO DE EXPEDIENTES ---")
-
+    # Verificar si existen expedientes
     if not expedientes:
-        print("No hay expedientes para ordenar.")
+        print("No existen expedientes registrados.")
         return
 
-    # Aplicar el metodo de burbuja
-    n = len(expedientes)
-
-    for i in range(n - 1):
-        for j in range(n - i - 1):
-
-            if expedientes[j]["codigo"] > expedientes[j + 1]["codigo"]:
-                expedientes[j], expedientes[j + 1] = expedientes[j + 1], expedientes[j]
-
-    print("Expedientes ordenados correctamente.")
+    # Ordenar desde el más antiguo hasta el más reciente
+    expedientes_ordenados = sorted(
+        expedientes,
+        key=lambda expediente: expediente["fecha_ingreso"]
+    )
 
     # Mostrar los expedientes ordenados
-    for expediente in expedientes:
-        print("-------------------------")
-        print("Codigo:", expediente["codigo"])
+    print("\n--- EXPEDIENTES ORDENADOS POR FECHA ---")
+
+    for expediente in expedientes_ordenados:
+        print("-----------------------------")
+        print("Código:", expediente["codigo"])
         print("Nombre:", expediente["nombre"])
         print("DNI:", expediente["dni"])
         print("Asunto:", expediente["asunto"])
+        print("Estado:", expediente["estado"])
+        print("Fecha de ingreso:", expediente["fecha_ingreso"])
+
+    return expedientes_ordenados
+
+
