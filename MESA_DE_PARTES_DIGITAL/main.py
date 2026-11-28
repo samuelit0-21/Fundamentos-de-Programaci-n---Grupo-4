@@ -20,6 +20,8 @@ from datos import expedientes
 # Importamos las cuentas de trabajadores
 from trabajadores import trabajadores
 
+# Importamos el acceso del ciudadano
+from acceso_ciudadano import iniciar_sesion_ciudadanos
 
 def mostrar_menu_inicial():
     """Muestra el menú inicial del programa."""
@@ -28,9 +30,9 @@ def mostrar_menu_inicial():
     print("       MESA DE PARTES DIGITAL")
     print("====================================")
     print("1. Acceso de trabajador")
-    print("2. Salir")
+    print("2. Acceso ciudadano")
+    print("3. Salir")
     print("====================================")
-
 
 def validar_credenciales(correo, contrasena):
     """Comprueba las credenciales del trabajador."""
@@ -75,6 +77,7 @@ def mostrar_acceso_trabajador():
         return False
 
 
+
 def mostrar_menu_trabajador():
     """Muestra el menú exclusivo del trabajador."""
 
@@ -116,6 +119,30 @@ def menu():
         else:
             print("\nOpción no válida. Intente nuevamente.")
 
+def menu():
+    """Controla el acceso inicial al programa."""
+
+    while True:
+        mostrar_menu_inicial()
+
+        opcion = input("Seleccione una opción: ").strip()
+
+        if opcion == "1":
+
+            acceso = mostrar_acceso_trabajador()
+
+            if acceso:
+                menu_administrativo()
+
+        elif opcion == "2":
+            iniciar_sesion_ciudadanos()
+
+        elif opcion == "3":
+            print("\nGracias por utilizar Mesa de Partes Digital.")
+            break
+
+        else:
+            print("\nOpción no válida. Intente nuevamente.")
 
 def menu_administrativo():
     """Controla las opciones exclusivas del trabajador."""
