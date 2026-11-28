@@ -11,6 +11,10 @@ def ordenar_expedientes_por_fecha(expedientes):
     if not expedientes:
         print("No existen expedientes registrados.")
         return
+    
+    # Verificar que los códigos sean únicos 
+    if not verificar_codigos_unicos(expedientes):
+    return
 
     # Ordenar desde el más antiguo hasta el más reciente
     expedientes_ordenados = sorted(
@@ -31,5 +35,25 @@ def ordenar_expedientes_por_fecha(expedientes):
         print("Fecha de ingreso:", expediente["fecha_ingreso"])
 
     return expedientes_ordenados
+
+# Verificar que los códigos de los expedientes sean únicos
+def verificar_codigos_unicos(expedientes):
+
+    codigos = []
+
+    # Recorrer los expedientes registrados
+    for expediente in expedientes:
+        codigo = expediente["codigo"]
+
+        # Comprobar si el código ya existe
+        if codigo in codigos:
+            print("Error: existen códigos duplicados.")
+            return False
+
+        codigos.append(codigo)
+
+    # Confirmar que todos los códigos son únicos
+    print("Todos los códigos son únicos.")
+    return True
 
 
