@@ -1,8 +1,14 @@
+
 # MESA DE PARTES DIGITAL
 
 # Importamos las funciones de los diferentes módulos
 from registros import registrar_expediente
-from consultas import buscar_expediente, buscar_por_dni, mostrar_expedientes, buscar_por_nombre
+from consultas import (
+    buscar_expediente,
+    buscar_por_dni,
+    mostrar_expedientes,
+    buscar_por_nombre
+)
 from ordenamiento import ordenar_expedientes_por_fecha
 from modificaciones import modificar_expediente
 from eliminaciones import eliminar_expediente
@@ -14,9 +20,6 @@ from datos import expedientes
 # Importamos las cuentas de trabajadores
 from trabajadores import trabajadores
 
-# Importamos el acceso del ciudadano
-from acceso_ciudadano import iniciar_sesion_ciudadanos
-
 
 def mostrar_menu_inicial():
     """Muestra el menú inicial del programa."""
@@ -25,13 +28,22 @@ def mostrar_menu_inicial():
     print("       MESA DE PARTES DIGITAL")
     print("====================================")
     print("1. Acceso de trabajador")
-    print("2. Acceso ciudadano")
-    print("3. Salir")
+    print("2. Salir")
     print("====================================")
 
 
+def validar_credenciales(correo, contrasena):
+    """Comprueba las credenciales del trabajador."""
+
+    if correo in trabajadores:
+        if trabajadores[correo]["contrasena"] == contrasena:
+            return True
+
+    return False
+
+
 def mostrar_acceso_trabajador():
-    """Solicita y valida las credenciales del trabajador."""
+    """Solicita y valida el acceso del trabajador."""
 
     print("\n====================================")
     print("       ACCESO DE TRABAJADORES")
@@ -40,27 +52,34 @@ def mostrar_acceso_trabajador():
     correo = input("Ingrese su correo electrónico: ").strip()
     contrasena = input("Ingrese su contraseña: ").strip()
 
-    if correo in trabajadores and trabajadores[correo]["contrasena"] == contrasena:
+    if validar_credenciales(correo, contrasena):
 
         nombre = trabajadores[correo]["nombre"]
 
-        print("\n¡ACCESO AUTORIZADO!")
+        print("\n====================================")
+        print("       ¡ACCESO AUTORIZADO!")
+        print("====================================")
         print(f"Bienvenido, {nombre}.")
+        print("====================================")
 
         return True
 
     else:
-        print("\nERROR: Credenciales incorrectas.")
-        print("Verifique su correo y contraseña.")
+        print("\n====================================")
+        print("       ACCESO DENEGADO")
+        print("====================================")
+        print("Correo o contraseña incorrectos.")
+        print("Verifique sus datos e intente nuevamente.")
+        print("====================================")
 
         return False
 
 
-def mostrar_menu():
-    """Muestra las opciones del menú administrativo."""
+def mostrar_menu_trabajador():
+    """Muestra el menú exclusivo del trabajador."""
 
     print("\n====================================")
-    print("       MESA DE PARTES DIGITAL")
+    print("       MENÚ DEL TRABAJADOR")
     print("====================================")
     print("1. Registrar expediente")
     print("2. Buscar expediente por código")
@@ -76,7 +95,7 @@ def mostrar_menu():
 
 
 def menu():
-    """Controla el acceso y las opciones del programa."""
+    """Controla el acceso inicial al programa."""
 
     while True:
         mostrar_menu_inicial()
@@ -91,9 +110,6 @@ def menu():
                 menu_administrativo()
 
         elif opcion == "2":
-            iniciar_sesion_ciudadanos()
-
-        elif opcion == "3":
             print("\nGracias por utilizar Mesa de Partes Digital.")
             break
 
@@ -102,10 +118,10 @@ def menu():
 
 
 def menu_administrativo():
-    """Controla las opciones del menú administrativo."""
+    """Controla las opciones exclusivas del trabajador."""
 
     while True:
-        mostrar_menu()
+        mostrar_menu_trabajador()
 
         opcion = input("Seleccione una opción: ").strip()
 
