@@ -2,6 +2,28 @@
 # Módulo de acceso para el ciudadano
 
 from registros import registrar_expediente
+from datos import expedientes
+
+
+def consultar_mis_expedientes(dni):
+    """Muestra únicamente los expedientes asociados al DNI del ciudadano."""
+    print(f"\n--- MIS EXPEDIENTES (DNI: {dni}) ---")
+
+    encontrado = False
+
+    for expediente in expedientes:
+        if expediente["dni"] == dni:
+            print("-------------------------")
+            print("Código:", expediente["codigo"])
+            print("Nombre:", expediente["nombre"])
+            print("DNI:", expediente["dni"])
+            print("Asunto:", expediente["asunto"])
+            print("Fecha de ingreso:", expediente.get("fecha_ingreso", "No registrada"))
+            print("Estado:", expediente.get("estado", "Pendiente"))
+            encontrado = True
+
+    if not encontrado:
+        print("No se encontraron expedientes asociados a su DNI.")
 
 
 def menu_ciudadano(dni, nombre):
@@ -22,7 +44,7 @@ def menu_ciudadano(dni, nombre):
             registrar_expediente()
 
         elif opcion == "2":
-            print("\n(Consulta por DNI pendiente de integración.)")
+            consultar_mis_expedientes(dni)
 
         elif opcion == "3":
             print("\nSesión de ciudadano cerrada. Regresando al menú principal.")
@@ -39,7 +61,6 @@ def iniciar_sesion_ciudadanos():
     dni = input("Ingrese su DNI: ").strip()
     nombre = input("Ingrese su nombre completo: ").strip()
 
-    # Validaciones
     if not dni.isdigit() or len(dni) != 8:
         print("Error: El DNI debe tener exactamente 8 dígitos numéricos.")
         return
