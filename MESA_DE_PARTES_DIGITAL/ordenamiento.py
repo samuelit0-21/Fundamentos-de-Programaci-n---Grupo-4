@@ -14,7 +14,7 @@ def ordenar_expedientes_por_fecha(expedientes):
     
     # Verificar que los códigos sean únicos 
     if not verificar_codigos_unicos(expedientes):
-    return
+        return
 
     # Ordenar desde el más antiguo hasta el más reciente
     expedientes_ordenados = sorted(
